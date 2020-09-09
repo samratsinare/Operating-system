@@ -1,0 +1,67 @@
+1.check the leap year
+
+  echo "enter year"
+   read year
+
+   if [[ "$year%4" -eq 0 ]];
+ then
+         echo "leap year"
+ else
+         echo "not leap year"
+ fi
+ 
+ 
+                                                                                                                     ~          
+
+
+ 4.Print Number is Even or Odd
+ 
+  echo "enter number"
+     read num
+
+   r=$(($num % 2))
+
+   if[$r -eq 0]then
+   
+        echo "even"
+		
+   else
+   
+        echo"odd"
+         fi
+	
+7.Fabonacci series
+
+ number=7
+
+a=0
+b=1
+
+echo "th fabo series"
+
+for(( i=0; i<number; i++ ))
+do
+        echo "$a"
+        temp=$((a + b))
+        a=$b
+        b=$temp
+done
+
+
+10.Write a shell script to print the reverse of an input number.
+
+  echo "enter number"
+
+read number
+
+a=0
+
+b=0
+while [ "$number" -gt 0 ]
+do
+        a=$(( $number % 10 ))
+        b=$(( $b * 10 + $a ))
+        number=$(( $number / 10 ))
+done
+
+echo "$b"
