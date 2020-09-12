@@ -1,0 +1,127 @@
+
+ 5. Write a program to print calendar of current month in next year,previous years.
+	For eg:-sep 2014,sep 2012 if current month is sep 2013	
+	
+	 mon=$(date | awk '{print $3}')
+year=$(date | awk '{print $4}')
+
+let "prev=year-1" "next=year+1"
+
+cal $mon $prev
+cal $mon $year
+cal $mon $next
+
+
+4.. Write a script that print environment variable(Print $HOME,$PATH,$SHELL,$HISTORY,$LOGNAME,$TERM)
+
+ echo "path = $PATH"
+echo "Shell = $SHELL"
+echo "History = $HISTORY"
+echo "Logname = $LOGNAME"
+echo "Term = $TERM"
+
+
+ Write a shell script to print all files permissions in current directory(Not name or other details)(Use cut commands)
+ 
+  ls -la | cut -b 1-10
+  ls -la | cut -c 1-10
+
+
+ Write a shell script to print all files permissions and name of file
+ 
+   ls -l | awk '{ print $1 }' 
+ 
+ 
+
+   a) Write a script to find biggest of three no.s
+   
+     echo 'Enter num1 : '
+	read num1
+	echo 'Enter num2 : '
+	read num2
+	echo 'Enter num3 : '
+	read num3
+
+	if (( num1 > num2 && num1 > num3 ))
+	then
+		echo $num1
+	elif (( num2 > num1 && num2 > num3 ))
+	then
+		echo $num2
+	else
+		echo $num3
+	fi
+   
+   b) To find avg of 3 no.s, read no.s from keyboard
+
+      echo 'enter num1'
+       read num1
+     echo 'enter num2'
+      read num2
+     echo 'enter num3'
+       read num3
+
+  (( avg = (( $num1+$num2+$num3 ))/3 ))
+
+      echo $avg
+                                   
+							  			 
+  Write a shell script to reverse the single strings. 
+
+	echo 'Enter a string : '
+	read str
+	rev=""
+	len=${#str}
+	for (( i=$len; i>0; i-- ))
+	do
+		temp=$(expr $str | cut -c $i)
+		rev=$rev$temp
+	done
+
+	echo $rev
+							 
+										 
+
+  Write a shell script to reverse the list of strings and reverse each string further in the list.
+
+
+	echo 'Enter array of Strings : '
+	read -a arr
+
+	min=0
+	max=`expr ${#arr[@]} - 1`
+	x=$max
+	while (( $min <= $max ))
+	do
+		newArr[$min]=${arr[$max]}
+		newArr[$max]=${arr[$min]}
+		(( min++ ))
+		(( max-- ))
+	done
+
+	max=$x
+
+	for (( i=0; i<=max; i++ ))
+	do
+		rev=""
+		str=${newArr[$i]}
+		let "len=${#str} -1"
+		for (( j=$len; j>=0; j-- ))
+		do
+			rev="$rev${str:$j:1}"
+		done
+		newArr[$i]=$rev
+	done
+
+	echo ${newArr[@]}									 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
